@@ -1,0 +1,49 @@
+
+IP - "GGLLGG"
+OP-TRUE/FALSE;
+My code - boolean isCircle(String s){
+  int n=s.length();
+  if(n==0)
+  return false;
+  
+ int x=0,y=0;
+  String directions ="north";
+  for(char vh: s.toCharArrray())
+    if(vh='G')
+     if(directions.equals("north")
+    y+=1;
+    else if(directions.equals("south")
+     y-=1;
+    else if(directions.equals("east")
+    x+=1;
+  else 
+   x-=1;
+}
+else if(vh='L'){
+  if(directions.equals("north"))
+   directions="west";
+   else if(directions.equals("west")
+  directions="south";
+  else if(directions.equals("south"))
+    directions="east"; 
+  else directions="north";
+}  
+else if(vh='R'){
+  if(directions.equals("north"))
+   directions="east";
+   else if(directions.equals("east")
+  directions="south";
+  else if(directions.equals("south"))
+    directions="west"; 
+  else directions="north";
+}
+}
+if(x==0 && y==0)
+  return true;
+ if(directions.equals("north"))
+   return false;
+return true;
+}
+   Strings are immutable in java  when String is in calling method never change,but when we initialize a string value in local function we can change later on .
+   Strings are immutable. Once you have created a string you cannot later change that string object. Java uses pass-by-value, not pass-by-reference. When you assign a new value to s in your method it only modifies the local s , not the original s in the calling code
+   
