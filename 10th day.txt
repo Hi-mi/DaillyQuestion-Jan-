@@ -1,0 +1,60 @@
+ Daily Qstn (Leetcode)
+  Day10 :
+Q  Add Binary String :
+  My approach :
+  Use of  carry and sum as variable to store sum and carry when adding both  binary strings a,b;
+   My code here we use int base=2;
+    because we want to output binary string ;
+   My code : 
+  1st code (index out of bound)
+   //     String ans="";
+    //     int j=a.length()-1,i=b.length()-1;
+    //     while(j>=0 || i>=0){
+    //      if(a.charAt(j)==b.charAt(i) && a.charAt(j)=='1' ){
+    //          char ch='1';
+    //          ans+='0';
+    //          j--;
+    //          i--;
+    //          if(ch==a.charAt(j)){
+    //              ans+='0';
+    //              ans+=ch;
+    //          }
+    //      }else{
+    //          ans+='1';
+    //          i--;
+    //          j--;
+    //      }
+    //     }
+    //     return ans;
+  
+  2nd code:
+   Dope
+   private static int BASE = 2;
+    public String addBinary(String a, String b) {
+       //string builder to append the intermediate values added 
+       StringBuilder sb = new StringBuilder();
+        //we start from the least significant bit for addition
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        //initialize with 0 for both sum and carry
+        int sum = 0;
+        int carry = 0;
+        while (i >= 0 || j >= 0){
+            //assign carry to sum as it will be added at each stage
+            sum = carry;
+            // add the value of the index character to the sum if index is greater than 0
+            if (i >= 0) sum += a.charAt(i--)-'0';
+            if (j >= 0) sum += b.charAt(j--)-'0';
+            //evaluate carry
+            carry = sum / BASE;
+            //append the mod value with BASE
+            sb.append(sum % BASE);
+        }
+        //if any carry left add to the final result
+        if (carry != 0) sb.append(carry);
+        //we reverse the string and return
+        return sb.reverse().toString();
+}
+  Tc=o(n+m)
+  sc=o(m+n)
+  
